@@ -1,2 +1,2 @@
-# SPRINGBOOT-microservices-parent-service-
+# Springboot-Microservices-Parent-Service-Backend
 project that contain product, order and inventory services
