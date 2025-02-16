@@ -5,6 +5,7 @@ import com.aimnode.product_service.dto.ProductResponse;
 import com.aimnode.product_service.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,14 +18,14 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED) // Change from ACCEPTED to CREATED
-    public void createProduct(@RequestBody ProductRequest productRequest) {
-        productService.createProduct(productRequest);
+    public ResponseEntity<ProductResponse> createProduct(@RequestBody ProductRequest productRequest) {
+        ProductResponse savedProduct = productService.createProduct(productRequest);
+        return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<ProductResponse> getAllProducts() {
-        return productService.getAllProducts();
+    public ResponseEntity<List<ProductResponse>> getAllProducts() {
+        List<ProductResponse> products = productService.getAllProducts();
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 }
