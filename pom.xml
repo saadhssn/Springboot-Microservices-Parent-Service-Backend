@@ -6,12 +6,37 @@
     <groupId>com.aimnode</groupId>
     <artifactId>microservices-new</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    
+    <packaging>pom</packaging>
+
     <name>microservices-new</name>
-    <description>microservices-new project for Spring Boot</description>
+    <description>Microservices parent project for Spring Boot</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.5</version>
+        <relativePath/>
+    </parent>
+
+    <modules>
+        <module>product-service</module>
+        <module>order-service</module>
+        <module>inventory-service</module>
+    </modules>
 
     <properties>
         <java.version>21</java.version>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>3.3.5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
