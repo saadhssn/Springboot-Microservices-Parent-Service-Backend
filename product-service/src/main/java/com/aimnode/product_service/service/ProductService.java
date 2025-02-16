@@ -17,26 +17,33 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public void createProduct(ProductRequest productRequest) {
+    public ProductResponse createProduct(ProductRequest productRequest) {
         Product product = new Product();
         product.setName(productRequest.getName());
         product.setDescription(productRequest.getDescription());
         product.setPrice(productRequest.getPrice());
-        productRepository.save(product);
-        log.info("Product {} is saved", product.getId());
+
+        Product savedProduct = productRepository.save(product);
+
+        log.info("Product {} is saved", savedProduct.getId());
+
+        return new ProductResponse(
+                savedProduct.getId(),
+                savedProduct.getName(),
+                savedProduct.getDescription(),
+                savedProduct.getPrice()
+        );
     }
 
     public List<ProductResponse> getAllProducts() {
         return productRepository.findAll()
                 .stream()
-                .map(product -> {
-                    ProductResponse response = new ProductResponse();
-                    response.setId(product.getId());
-                    response.setName(product.getName());
-                    response.setDescription(product.getDescription());
-                    response.setPrice(product.getPrice());
-                    return response;
-                })
+                .map(product -> new ProductResponse(
+                        product.getId(),
+                        product.getName(),
+                        product.getDescription(),
+                        product.getPrice()
+                ))
                 .toList();
     }
 }
