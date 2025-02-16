@@ -5,13 +5,17 @@ import com.aimnode.order_service.dto.OrderRequest;
 import com.aimnode.order_service.model.Order;
 import com.aimnode.order_service.model.OrderLineItems;
 import com.aimnode.order_service.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class OrderService {
 
     @Autowired
