@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.aimnode</groupId>
-	<artifactId>inventory-service</artifactId>
+	<artifactId>order-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>inventory-service</name>
+	<name>order-service</name>
 	<description>Inventory Service project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -81,5 +81,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
